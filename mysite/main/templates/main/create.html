@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Create new list
+{% endblock %}
+
+{% block content %}
+Create page
+<form method="post" action="/create/">
+	<!-- anytime a form is created we need csrf_token -->
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit", name="save">Create New</button>
+</form>
+{% endblock %}
