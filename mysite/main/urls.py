@@ -15,5 +15,6 @@ path("create/", views.create, name="create"),
 
 #""directory in url, views.v1 is the function v1() ran from views.py dont know what name is for
 path("v1/", views.v1, name="view 1"),
+path("view/", views.view, name="view"),
 
 ]
