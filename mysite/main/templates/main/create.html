@@ -5,11 +5,15 @@ Create new list
 {% endblock %}
 
 {% block content %}
-Create page
-<form method="post" action="/create/">
+<h3>Create page</h3>
+<form method="post" action="/create/" class="form-group">
 	<!-- anytime a form is created we need csrf_token -->
 	{% csrf_token %}
-	{{form.as_p}}
-	<button type="submit", name="save">Create New</button>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<button type="submit", name="save" class="btn btn-success">Create New</button>
+		</div>
+		{{form.name}}
+	</div>
 </form>
 {% endblock %}
