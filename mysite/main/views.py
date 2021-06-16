@@ -58,7 +58,7 @@ def create(response): #response takes in the html request types "get", "post", e
 			# #prevents sql injection attacks
 			# n = form.cleaned_data["name"]
 			# t = ToDoList(name=n)
-			# t.save()
+			# t.save() is needed at every creation
 
 		return HttpResponseRedirect("/%i" %t.id)
 
