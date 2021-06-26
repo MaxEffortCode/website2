@@ -10,4 +10,23 @@ View
 		<p><a href="{% url 'main:index' td.id %}">{{td.name}}</a></p>
 		<p>"hello"</p>
 	{% endfor %}
+
+	<form action="{% url 'main:index' user.id %}" method="post">
+		{% csrf_token %}
+		{% load crispy_forms_filters %}
+		<fieldset>
+			{% for item in user.todolist.all %}
+				
+					<legend><h1>{{ item.name }}</h1></legend>
+					{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+					
+					{% for item in item.item_set.all %}
+						 <input type="radio" name="item" id="item{{ forloop.counter }}" value="{{ item.id }}">
+						 <label for="item{{ forloop.counter }}">{{ item.text }}</label><br>
+					{% endfor %}
+				
+			{% endfor %}
+		</fieldset>
+		<input type="submit" value="vote">
+	</form>
 {% endblock %}
