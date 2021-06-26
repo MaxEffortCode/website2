@@ -7,5 +7,7 @@ View
 {% block content %}
 	{% for td in user.todolist.all %}
 		<p><a href="/{{td.id}}">{{td.name}}</p>
+		<p><a href="{% url 'main:index' td.id %}">{{td.name}}</a></p>
+		<p>"hello"</p>
 	{% endfor %}
 {% endblock %}
