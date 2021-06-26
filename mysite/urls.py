@@ -15,10 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from register import views as v
+from register import urls
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), #only one that shouldn't use "include"
     path('', include("main.urls")), #'' is for homepage to direct to include("main.urls") located in mysite/main/urls.py
     #all other links proceding '' will lead to urls.py for a matching name. ie website/home would go to urls.py and look for a path that 
     #has path("home/", views.HomehtmlPageCode, name="function in views.py")
+    path('register/', include("register.urls")),
+    path('<int:id>', include("main.urls")),
+    path('', include("django.contrib.auth.urls")),
+    
+
+
 ]
+
+# start
