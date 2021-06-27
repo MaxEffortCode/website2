@@ -11,18 +11,25 @@ View
 		<p>"hello"</p>
 	{% endfor %}
 
-	<form action="{% url 'main:index' user.id %}" method="post">
+	<form action="{% url 'main:vote' 14 %}" method="post">
 		{% csrf_token %}
 		{% load crispy_forms_filters %}
 		<fieldset>
-			{% for item in user.todolist.all %}
+			{% for list in user.todolist.all %}
 				
-					<legend><h1>{{ item.name }}</h1></legend>
+					<legend><h1>{{ list.name }}</h1></legend>
 					{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 					
-					{% for item in item.item_set.all %}
-						 <input type="radio" name="item" id="item{{ forloop.counter }}" value="{{ item.id }}">
-						 <label for="item{{ forloop.counter }}">{{ item.text }}</label><br>
+					{% for item in list.item_set.all %}
+						 
+						 <input type="radio" name="id" id=item{{list.id}} value={{list.id}}>
+						 
+						 <label for=item{{list.id}}>{{ item.text }}</label><br>
+
+						 <p> item {{ forloop.counter }} </p>
+
+						 <p> item {{ list.id }} </p><br>
+					
 					{% endfor %}
 				
 			{% endfor %}
