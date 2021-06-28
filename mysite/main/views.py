@@ -3,6 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .models import ToDoList, Item
 from .forms import CreateNewList
 
+
+
+
 # Create your views here.
 
 def index(response, id):
@@ -69,4 +72,15 @@ def create(response): #response takes in the html request types "get", "post", e
 
 def view(response):
 	return render(response, "main/view.html", {})
+
+def vote(request):
+	return render(response, "main/view.html", {"form":form})
+
+'''def vote(request, list_id):
+    return HttpResponse("You're voting on question %s." % list_id)
+'''
+def vote(request, item_id):
+	item = get_object_or_404(Question, pk=item_id)
+    return HttpResponse("You're voting on question %s." % item_id)
+
 
