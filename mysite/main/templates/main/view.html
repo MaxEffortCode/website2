@@ -11,9 +11,9 @@ View
 		<p>"hello"</p>
 	{% endfor %}
 
-	<form action="{% url 'main:vote' 14 %}" method="post">
+
 		{% csrf_token %}
-		{% load crispy_forms_filters %}
+		
 		<fieldset>
 			{% for list in user.todolist.all %}
 				
@@ -21,19 +21,28 @@ View
 					{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 					
 					{% for item in list.item_set.all %}
-						 
-						 <input type="radio" name="id" id=item{{list.id}} value={{list.id}}>
-						 
-						 <label for=item{{list.id}}>{{ item.text }}</label><br>
+					
+					{% load crispy_forms_filters %}
+						 <form action="{% url 'main:vote' item.id %}" method="post">
 
-						 <p> item {{ forloop.counter }} </p>
+						 {% csrf_token %}
+						 
+						 <input type="radio" name="hi{{ forloop.counter }}" id=item{{item.id}} value={{item.id}}>
+						 
+						 <label for="hi{{ forloop.counter }}">{{ item.text }}</label><br>
 
-						 <p> item {{ list.id }} </p><br>
+						 <input type="submit" value="vote">
+
+						 <p> item id {{ item.id }} </p>
+
+						 <p> for loop {{ forloop.counter }} </p>
+
+						 <p> item list id {{ list.id }} </p><br>
+						</form>
 					
 					{% endfor %}
 				
 			{% endfor %}
 		</fieldset>
-		<input type="submit" value="vote">
-	</form>
+		
 {% endblock %}
