@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .models import ToDoList, Item
 from .forms import CreateNewList
@@ -73,14 +73,14 @@ def create(response): #response takes in the html request types "get", "post", e
 def view(response):
 	return render(response, "main/view.html", {})
 
-def vote(request):
+def vote(response):
 	return render(response, "main/view.html", {"form":form})
 
 '''def vote(request, list_id):
     return HttpResponse("You're voting on question %s." % list_id)
 '''
-def vote(request, item_id):
-	item = get_object_or_404(Question, pk=item_id)
-    return HttpResponse("You're voting on question %s." % item_id)
+def vote(response, item_id):
+	item = get_object_or_404(ToDoList, pk=item_id)
+	return render(response, "main/list.html", {"ls":item})
 
 
