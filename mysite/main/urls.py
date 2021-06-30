@@ -1,6 +1,8 @@
 from django.urls import path
-
+from django.views.generic import TemplateView
 from . import views
+from django.views.generic import TemplateView
+
 
 
 # Django provides base view classes which will suit a wide range of applications. All views inherit from the View 
@@ -30,5 +32,8 @@ path("create/", views.create, name="create"),
 path("v1/", views.v1, name="view 1"),
 path("view/", views.view, name="view"),
 path('<int:item_id>/vote/', views.vote, name='vote'),
+path('<int:item_id>/results/', views.ResultsView.as_view(), name='results'),
+
+
 
 ]
