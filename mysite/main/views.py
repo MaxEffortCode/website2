@@ -1,12 +1,18 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.views.generic import TemplateView
+from django.urls import reverse
+from django.views import generic
 from .models import ToDoList, Item
 from .forms import CreateNewList
 
 
 
-
 # Create your views here.
+class ResultsView(generic.DetailView):
+    model = ToDoList
+    template_name = 'main/results.html'
+
 
 def index(response, id):
 	ls = ToDoList.objects.get(id=id)
@@ -83,4 +89,6 @@ def vote(response, item_id):
 	item = get_object_or_404(ToDoList, pk=item_id)
 	return render(response, "main/list.html", {"ls":item})
 
-
+def results(request, item_id):
+	item = get_object_or_404(ToDoList, pk=item_id)
+	return render(response, "main/results.html", {"ls":item})
