@@ -25,10 +25,10 @@ urlpatterns = [
     #all other links proceding '' will lead to urls.py for a matching name. ie website/home would go to urls.py and look for a path that 
     #has path("home/", views.HomehtmlPageCode, name="function in views.py")
     path('register/', include("register.urls")),
-    #path("register/", v.register, name="register"),
+
     path('<int:id>', include("main.urls")),
     path('', include("django.contrib.auth.urls")),
-    
+    path('polls/', include('polls.urls')),
 
 
 ]
