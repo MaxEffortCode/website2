@@ -16,4 +16,6 @@ from django.apps import AppConfig
 
 
 class PollsConfig(AppConfig):
+    #dont know if thatll work vvvvvvvvvvvvvvvvvvvvv
+    default_auto_field = 'django.db.models.BigAutoField'
     name = "polls"
