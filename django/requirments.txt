@@ -1,6 +1,17 @@
+  
 Django==3.2.4
 django-storages[google]==1.11.1
 django-environ==0.4.5
 psycopg2-binary==2.9.1
 gunicorn==20.1.0
 google-cloud-secret-manager==2.5.0
+django-filter==2.4.0
+django-bootstrap4==3.0.1
+beautifulsoup4==4.9.3
+google-cloud-storage==1.39.0
+google-cloud-bigquery==2.20.0
+Jinja2==3.0.1
+requests==2.25.1
+sqlparse==0.4.1
+stripe==1.84.2
+urllib3==1.26.5
