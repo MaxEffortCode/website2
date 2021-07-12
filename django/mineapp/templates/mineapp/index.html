@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'mienapp/styles.css' %}">
+{% csrf_token %}
+<!--the porblem lies with latest_question_list-->
+<p>meow</p>
+{% if latest_question_list %}
+    <p>hhehhhuhuhuhhhhhh</p>
+    <ul>
+    {% for todolist in latest_question_list %}
+        <li><a href="{% url 'mineapp:detail' todolist.id %}">{{ todolist.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No todolists are available.</p>
+{% endif %}
