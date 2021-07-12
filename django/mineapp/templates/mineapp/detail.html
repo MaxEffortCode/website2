@@ -1,0 +1,13 @@
+<form action="{% url 'mineapp:detail' todolist.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>{{ todolist.name }}</h1></legend>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for item in todolist.item_set.all %}
+        <input type="radio" name="choice" id="item{{ forloop.counter }}" value="{{ item.id }}">
+        <label for="item{{ forloop.counter }}">{{ item.text }}</label><br>
+        <button type="submit", name="save" class="btn btn-success">Create New</button>
+    {% endfor %}
+</fieldset>
+<input type="submit" value="Vote">
+</form>
