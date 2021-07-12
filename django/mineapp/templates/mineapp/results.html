@@ -1,0 +1,11 @@
+  
+
+<h1>{{ todolist.text }}</h1>
+
+<ul>
+{% for item in todolist.choice_set.all %}
+    <li>{{ item.name }} -- {{ item.name }} </li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'mineapp:detail' todolist.id %}">Vote again?</a>
